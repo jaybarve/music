@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Jarvis Music Visualizer</title>
+<style>
+    body {
+        margin: 0;
+        background: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+    }
+
+    .visualizer {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        box-shadow: 0 0 30px cyan, inset 0 0 30px cyan;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .circle {
+        position: absolute;
+        border-radius: 50%;
+        border: 2px solid cyan;
+        animation: pulse 2s infinite;
+    }
+
+    .circle:nth-child(1) {
+        width: 200px;
+        height: 200px;
+    }
+
+    .circle:nth-child(2) {
+        width: 150px;
+        height: 150px;
+        animation-delay: 0.5s;
+    }
+
+    .circle:nth-child(3) {
+        width: 100px;
+        height: 100px;
+        animation-delay: 1s;
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(0.9);
+            opacity: 0.7;
+        }
+        50% {
+            transform: scale(1.2);
+            opacity: 1;
+        }
+        100% {
+            transform: scale(0.9);
+            opacity: 0.7;
+        }
+    }
+
+    .text {
+        position: absolute;
+        color: cyan;
+        font-size: 18px;
+        letter-spacing: 2px;
+    }
+</style>
+</head>
+<body>
+
+<div class="visualizer">
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="text">JARVIS</div>
+</div>
+
+<audio id="music" autoplay loop>
+    <source src="music.mpeg" type="audio/mpeg">
+</audio>
+
+<script>
+    // Fix autoplay issue (mobile browsers need user interaction)
+    document.body.addEventListener('click', function () {
+        const audio = document.getElementById("music");
+        audio.play();
+    });
+</script>
+
+</body>
+</html>
